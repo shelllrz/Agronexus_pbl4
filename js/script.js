@@ -1,4 +1,4 @@
-// --- Funcionalidades da Fase 3 ---
+
 function sincronizar() {
     alert("Dados sincronizados com sucesso! O AgroNexus funciona offline e envia seus dados assim que detectar conexão.");
 }
@@ -11,9 +11,6 @@ function falar() {
     }
 }
 
-// --- Novas Funcionalidades da Fase 4 (Simplificadas) ---
-
-// 1. Validação do Formulário "Fale Conosco"
 var formContato = document.getElementById('formContato');
 
 if (formContato) {
@@ -22,7 +19,6 @@ if (formContato) {
     var inputMensagem = document.getElementById('mensagem');
     var charCount = document.getElementById('charCount');
 
-    // Contador de caracteres em tempo real
     inputMensagem.oninput = function() {
         var tamanho = inputMensagem.value.length;
         charCount.innerText = tamanho + " / 500";
@@ -37,13 +33,10 @@ if (formContato) {
     formContato.onsubmit = function(evento) {
         evento.preventDefault();
         var valido = true;
-
-        // Limpar estados de erro anteriores
         inputNome.classList.remove('is-invalid');
         inputEmail.classList.remove('is-invalid');
         inputMensagem.classList.remove('is-invalid');
 
-        // Validação Nome Completo (Verifica se tem pelo menos um espaço)
         var nomeValor = inputNome.value.trim();
         if (nomeValor === "") {
             mostrarErro(inputNome, "O nome não pode estar em branco.");
@@ -53,7 +46,6 @@ if (formContato) {
             valido = false;
         }
 
-        // Validação E-mail Simples (Verifica se tem @ e ponto)
         var emailValor = inputEmail.value.trim();
         if (emailValor === "") {
             mostrarErro(inputEmail, "O e-mail não pode estar em branco.");
@@ -63,7 +55,6 @@ if (formContato) {
             valido = false;
         }
 
-        // Validação Mensagem
         var msgValor = inputMensagem.value.trim();
         if (msgValor === "") {
             mostrarErro(inputMensagem, "A descrição não pode estar em branco.");
@@ -89,10 +80,9 @@ function mostrarErro(input, mensagem) {
     }
 }
 
-// 2. Nova Funcionalidade: Simulador de Mercado Justo
 function calcularLucro() {
-    var precoIntermediario = 2.50; // R$ por kg
-    var precoDireto = 4.80; // R$ por kg
+    var precoIntermediario = 2.50;
+    var precoDireto = 4.80;
     var inputQtd = document.getElementById('qtdProducao');
     var qtd = parseFloat(inputQtd.value);
     
